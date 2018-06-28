@@ -1,0 +1,129 @@
+{
+  "interpreterSettings": {
+    "2AJXGMUUJ": {
+      "id": "2AJXGMUUJ",
+      "name": "md",
+      "group": "md",
+      "properties": {},
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.markdown.Markdown",
+          "name": "md"
+        }
+      ],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "perNote": "isolated",
+        "perNote": "isolated",
+        "isExistingProcess": false
+      }
+    },
+    "2AM1YV5CU": {
+      "id": "2AM1YV5CU",
+      "name": "angular",
+      "group": "angular",
+      "properties": {},
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.angular.AngularInterpreter",
+          "name": "angular"
+        }
+      ],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "perNote": "isolated",
+        "perNote": "isolated",
+        "isExistingProcess": false
+      }
+    },
+    "2BRWU4WXC": {
+      "id": "2BRWU4WXC",
+      "name": "python",
+      "group": "python",
+      "properties": {
+        "zeppelin.python": "python",
+        "zeppelin.python.maxResult": "1000"
+      },
+      "interpreterGroup": [
+        {
+          "name": "python",
+          "class": "org.apache.zeppelin.python.PythonInterpreter"
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "perNote": "isolated",
+        "perNote": "isolated",
+        "isExistingProcess": false
+      }
+    },
+    "2AKK3QQXU": {
+      "id": "2AKK3QQXU",
+      "name": "sh",
+      "group": "sh",
+      "properties": {
+        "shell.command.timeout.millisecs": "60000"
+      },
+      "interpreterGroup": [
+        {
+          "name": "sh",
+          "class": "org.apache.zeppelin.shell.ShellInterpreter"
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "perNote": "isolated",
+        "perNote": "isolated",
+        "isExistingProcess": false
+      }
+    },
+    "2ANGGHHMQ": {
+      "id": "2ANGGHHMQ",
+      "name": "spark",
+      "group": "spark",
+      "properties": {
+        "spark.yarn.jar": "",
+        "zeppelin.spark.printREPLOutput": "true",
+        "master": "yarn-client",
+        "zeppelin.spark.maxResult": "1000",
+        "spark.app.name": "Zeppelin",
+        "zeppelin.spark.useHiveContext": "true",
+        "args": "",
+        "spark.home": "/usr/lib/spark",
+        "zeppelin.spark.concurrentSQL": "true",
+        "zeppelin.spark.importImplicit": "true",
+        "zeppelin.pyspark.python": "python3",
+        "zeppelin.dep.localrepo":"/usr/lib/zeppelin/local-repo"
+      },
+      "interpreterGroup": [
+        {
+          "class": "org.apache.zeppelin.spark.SparkInterpreter",
+          "name": "spark"
+        },
+        {
+          "class": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "name": "pyspark",
+          "defaultInterpreter": true
+        },
+        {
+          "class": "org.apache.zeppelin.spark.SparkSqlInterpreter",
+          "name": "sql"
+        }
+      ],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "perNote": "isolated",
+        "perNote": "isolated",
+        "isExistingProcess": false
+      }
+    }
+  },
+  "interpreterBindings": {}
+}
