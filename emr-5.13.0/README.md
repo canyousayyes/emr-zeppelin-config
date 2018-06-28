@@ -66,3 +66,65 @@
 ---
 
 ## Some Notes about Deploying to Production ##
+
+While we have successfully automated the notebooks in production, readers who refer to this guide should take extra steps in order to deploy.
+
+Your mileage may vary, but we provide the following suggestions.
+
+### Automate the customizations ###
+
+If the EMR cluster is planned to be long running, then one-time setup maybe fine.
+
+Otherwise, automating the customization should be considered, for example:
+
+1. Prepare a bootstrap script to download drivers and update the config files.
+
+1. Adding a step in EMR to execute the script. e.g. in `cloudformation.yml`, add one more resource:
+
+    ```
+    EmrConfigStep:
+      Type: "AWS::EMR::Step"
+      Properties:
+        ActionOnFailure: "TERMINATE_CLUSTER"
+        HadoopJarStep:
+          Jar: "s3://region.elasticmapreduce/libs/script-runner/script-runner.jar"
+          Args:
+            - "s3://path/to/config/script"
+        JobFlowId: !Ref EmrCluster
+        Name: "EmrConfigStep"
+    ```
+
+### Automate the execution of notebooks ###
+
+Zeppelin notebooks can be scheduled using its [built-in cron](https://zeppelin.apache.org/docs/0.8.0-SNAPSHOT/usage/other_features/cron_scheduler.html).
+
+Moreover, it's possible to use [REST API](https://zeppelin.apache.org/docs/0.7.3/rest-api/rest-notebook.html) to run the notebooks programmatically.
+
+Some notes on running notebooks:
+
+1. You may define input parameters in the notebooks like:
+
+    ```python
+    start_date = z.input("start_date")
+    end_date = z.input("end_date")
+    # Process data between the input date range
+    ```
+
+    More on input parameters in [Zeppelin documentation](https://zeppelin.apache.org/docs/0.7.3/manual/dynamicform.html).
+
+2. To run notebook with parameters, you need to run that one paragraph by the REST API, e.g.
+
+    ```python
+    import requests
+    import json
+    res = requests.post(
+      "http://<EMR_endpoint>:8890/api/notebook/job/<notebook_id>/<paragraph_id>",
+      data=json.dumps({
+        "params": {
+          "start_date": "2018-06-01",
+          "end_date": "2018-06-02"
+        }
+      })
+    )
+    res.raise_for_status()
+    ```
