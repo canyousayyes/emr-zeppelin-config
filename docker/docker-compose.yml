@@ -9,5 +9,6 @@ services:
     volumes:
       - "./interpreter.json:/zeppelin/conf/interpreter.json"
       - "./drivers:/zeppelin/drivers"
+      - "./notebook:/zeppelin/notebook"
     ports:
       - "8080:8080"
