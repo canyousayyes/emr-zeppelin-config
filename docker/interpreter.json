@@ -675,7 +675,7 @@
         "zeppelin.dep.additionalRemoteRepository": "spark-packages,http://dl.bintray.com/spark-packages/maven,false;",
         "zeppelin.spark.sql.stacktrace": "false",
         "zeppelin.spark.importImplicit": "true",
-        "zeppelin.spark.concurrentSQL": "false",
+        "zeppelin.spark.concurrentSQL": "true",
         "zeppelin.spark.useHiveContext": "true",
         "zeppelin.pyspark.python": "python3",
         "zeppelin.dep.localrepo": "local-repo",
